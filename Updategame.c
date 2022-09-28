@@ -98,7 +98,7 @@ void UpdateGame(void)
                 {
                     enemy[i].rec.x -= enemy[i].speed.x;
 
-                    if (enemy[i].rec.x < 0)
+                    if (enemy[i].rec.x < -40)
                     {
                         enemy[i].rec.x = GetRandomValue(screenWidth, screenWidth + 1000);
                         enemy[i].rec.y = GetRandomValue(0, screenHeight - enemy[i].rec.height);
