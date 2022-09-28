@@ -1,7 +1,7 @@
-#include "raylib.h"
 #ifndef CABECALHO_H
-//Todos os "defines" aqui
 #define CABECALHO_H
+#include "raylib.h"
+//Todos os "defines" aqui
 #define NUM_SHOOTS 50
 #define NUM_MAX_ENEMIES 30
 #define FIRST_WAVE 10
