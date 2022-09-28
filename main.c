@@ -155,7 +155,7 @@ int main(){
                 case HIST1:
                 {
                     // TODO: Draw LOGO screen here!
-                    DrawText("Em uma galáxia TOTALMENTE distante, jovens, iniciantes na área", 40, 0, 20, BLACK);
+                    DrawText("Em uma galáxia TOTALMENTE distante,", 180, 0, 20, BLACK);
                     DrawText("jovens, iniciantes na área de programação,", 160, 40, 20, BLACK);
                     DrawText("buscam incessantemente por conhecimento divino", 140, 80, 20, BLACK);
                     DrawText("sobre as mais variáveis linguagens.", 220, 120, 20, BLACK);
