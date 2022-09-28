@@ -9,7 +9,7 @@
 #define THIRD_WAVE 50
 
 //Todos os typedefs aqui
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING, RANKING } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING, RANKING,HIST1,HIST2 } GameScreen;
 typedef enum { FIRST = 0, SECOND, THIRD } EnemyWave;
 
 typedef struct Player{
