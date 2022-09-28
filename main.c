@@ -4,10 +4,20 @@
 #include "Drawgame.c"
 #include "Unloadgame.c"
 
-
 int main(){
     
      InitWindow(screenWidth, screenHeight, "TESTE");
+     
+     InitAudioDevice();              // Initialize audio device
+
+    Music music = LoadMusicStream("resources/country.mp3");
+
+    PlayMusicStream(music);
+    
+    float timePlayed = 0.0f;        // Time played normalized [0.0f..1.0f]
+   
+    bool pause = false;             // Music playing paused
+
 
      GameScreen currentScreen = LOGO;
 
@@ -20,7 +30,21 @@ int main(){
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {// Update
-        
+         UpdateMusicStream(music);   // Update music buffer with new stream data
+         SetMusicVolume(music, 0.007f);                  
+        // Pause/Resume music playing
+        if (IsKeyPressed(KEY_P))
+        {
+            pause = !pause;
+
+            if (pause) PauseMusicStream(music);
+            else ResumeMusicStream(music);
+        }
+
+        // Get normalized time played for current music stream
+        timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
+
+        if (timePlayed > 1.0f) timePlayed = 1.0f;   // Make sure time played is no longer than music
         //----------------------------------------------------------------------------------
         switch(currentScreen)
         {
@@ -32,6 +56,30 @@ int main(){
 
                 // Wait for 2 seconds (120 frames) before jumping to TITLE screen
                 if (framesCounter > 120)
+                {
+                    currentScreen = HIST1;
+                }
+            } break;
+            case HIST1:
+            {
+                // TODO: Update LOGO screen variables here!
+
+                framesCounter++;    // Count frames
+
+                // Wait for 2 seconds (120 frames) before jumping to TITLE screen
+                if (framesCounter > 900)
+                {
+                    currentScreen = HIST2;
+                }
+            } break;
+            case HIST2:
+            {
+                // TODO: Update LOGO screen variables here!
+
+                framesCounter++;    // Count frames
+
+                // Wait for 2 seconds (120 frames) before jumping to TITLE screen
+                if (framesCounter > 1800)
                 {
                     currentScreen = TITLE;
                 }
@@ -49,7 +97,7 @@ int main(){
                 if (IsKeyPressed('R')) //ranking
                 {
                     currentScreen = RANKING;
-                }
+                }                
             } break;
             case GAMEPLAY:
             {
@@ -103,6 +151,33 @@ int main(){
                     DrawText("Mr. P entertainment", 160, 200, 40, BLACK);
 
                 } break;
+                
+                case HIST1:
+                {
+                    // TODO: Draw LOGO screen here!
+                    DrawText("Em uma galáxia TOTALMENTE distante, jovens, iniciantes na área", 40, 0, 20, BLACK);
+                    DrawText("jovens, iniciantes na área de programação,", 160, 40, 20, BLACK);
+                    DrawText("buscam incessantemente por conhecimento divino", 140, 80, 20, BLACK);
+                    DrawText("sobre as mais variáveis linguagens.", 220, 120, 20, BLACK);
+                    DrawText("Entretato..., ", 320,160, 20, BLACK);
+                    DrawText("eles não contavam com os obstáculos que apreceriam no caminho.", 60, 200, 20, BLACK);
+                    DrawText("Criaturas bizzaras como o PORTUGOL,", 190, 240, 20, BLACK);
+                    DrawText("ou altamente complicadas de entender,", 190, 280, 20, BLACK);
+                    DrawText("como o arquivo binário, parecem brotar do canto da tela",100, 320, 20, BLACK);
+                    DrawText("com objetivo de anaquilar esses estudantes ", 180, 360, 20, BLACK);
+                    DrawText(" '-' ( ou nou!!)", 310, 400, 20, BLACK);
+                     
+                } break;
+                 
+                 case HIST2:
+                {
+                    // TODO: Draw LOGO screen here!
+                    DrawText("Então, montados em sua nave EL RATON,", 180, 140, 20, BLACK);
+                    DrawText("os gênios da programação irão enfrentar tais criaturas,", 120, 180, 20, BLACK); 
+                    DrawText(" passando por diversas ondas de inimigos, almejando", 120, 220, 20, BLACK);
+                    DrawText("unicamente Dom Pedro 2 como presidente do brasil", 140,260, 20, BLACK);                     
+                } break;
+                
                 case TITLE:
                 {
                     // TODO: Draw TITLE screen here!
@@ -121,7 +196,7 @@ int main(){
                 } break;
                 case GAMEPLAY:
                 {
-                    DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, PINK);
                     DrawGame();
 
                 } break;
@@ -145,3 +220,4 @@ int main(){
     CloseWindow(); 
     return 0;
 }
+
