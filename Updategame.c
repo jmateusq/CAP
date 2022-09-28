@@ -10,7 +10,7 @@ void UpdateGame(void)
         framesCounter++; // Count frames
 
         // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-        if (framesCounter > 1)
+        if (framesCounter > 120)
         {
             currentScreen = HIST1;
         }
@@ -23,7 +23,7 @@ void UpdateGame(void)
         framesCounter++; // Count frames
 
         // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-        if (framesCounter > 1)
+        if (framesCounter > 900)
         {
             currentScreen = HIST2;
         }
@@ -36,7 +36,7 @@ void UpdateGame(void)
         framesCounter++; // Count frames
 
         // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-        if (framesCounter > 1)
+        if (framesCounter > 1800)
         {
             currentScreen = TITLE;
         }
