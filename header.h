@@ -1,6 +1,7 @@
-#ifndef CABECALHO_H
-#define CABECALHO_H
+#ifndef HEADER_H
+#define HEADER_H
 #include "raylib.h"
+#include <stdlib.h>
 //Todos os "defines" aqui
 #define NUM_SHOOTS 50
 #define NUM_MAX_ENEMIES 30
@@ -9,16 +10,28 @@
 #define THIRD_WAVE 50
 
 //Todos os typedefs aqui
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING, RANKING,HIST1,HIST2 } GameScreen;
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING, RANKING, HIST1, HIST2 } GameScreen;
 typedef enum { FIRST = 0, SECOND, THIRD } EnemyWave;
 
 typedef struct Player{
+    Texture2D scarfy;
     Rectangle rec;
     Vector2 speed;
     Color color;
 } Player;
 
+typedef struct Background{
+    Texture2D texture_back;
+    int position_x;
+    int position_y;
+} Background;
+
+typedef struct EnemyTexture{
+    Texture2D textureEnemy;
+} EnemyTexture;
+
 typedef struct Enemy{
+    Texture2D* realTextureEnemy;
     Rectangle rec;
     Vector2 speed;
     bool active;
@@ -42,6 +55,8 @@ int score = 0;
 bool victory = false;
 
 Player player = { 0 };
+EnemyTexture enemyTexture[4] = { 0 };
+Background background = { 0 };
 Enemy enemy[NUM_MAX_ENEMIES] = { 0 };
 Shoot shoot[NUM_SHOOTS] = { 0 };
 EnemyWave wave = { FIRST };
