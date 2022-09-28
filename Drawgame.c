@@ -18,7 +18,7 @@ void DrawGame(void)
             {
                 if (enemy[i].active){
                     //DrawRectangleRec(enemy[i].rec, enemy[i].color);
-                    DrawTexture(*enemy[i].realTextureEnemy, enemy[i].rec.x, enemy[i].rec.y -42, RAYWHITE);
+                    DrawTexture(*enemy[i].realTextureEnemy, enemy[i].rec.x, enemy[i].rec.y -40, RAYWHITE);
                 }
             }
 
