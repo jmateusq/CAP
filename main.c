@@ -55,7 +55,7 @@ int main(){
                 framesCounter++;    // Count frames
 
                 // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-                if (framesCounter > 120)
+                if (framesCounter > 1)
                 {
                     currentScreen = HIST1;
                 }
@@ -67,7 +67,7 @@ int main(){
                 framesCounter++;    // Count frames
 
                 // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-                if (framesCounter > 900)
+                if (framesCounter > 1)
                 {
                     currentScreen = HIST2;
                 }
@@ -79,7 +79,7 @@ int main(){
                 framesCounter++;    // Count frames
 
                 // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-                if (framesCounter > 1800)
+                if (framesCounter > 1)
                 {
                     currentScreen = TITLE;
                 }
@@ -155,7 +155,7 @@ int main(){
                 case HIST1:
                 {
                     // TODO: Draw LOGO screen here!
-                    DrawText("Em uma galáxia TOTALMENTE distante,", 180, 0, 20, BLACK);
+                    DrawText("Em uma galáxia TOTALMENTE distante, jovens, iniciantes na área", 40, 0, 20, BLACK);
                     DrawText("jovens, iniciantes na área de programação,", 160, 40, 20, BLACK);
                     DrawText("buscam incessantemente por conhecimento divino", 140, 80, 20, BLACK);
                     DrawText("sobre as mais variáveis linguagens.", 220, 120, 20, BLACK);
@@ -196,7 +196,7 @@ int main(){
                 } break;
                 case GAMEPLAY:
                 {
-                    DrawRectangle(0, 0, screenWidth, screenHeight, PINK);
+                    DrawRectangle(0, 0, screenWidth, screenHeight, BLACK);
                     DrawGame();
 
                 } break;
@@ -220,4 +220,3 @@ int main(){
     CloseWindow(); 
     return 0;
 }
-
