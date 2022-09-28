@@ -1,4 +1,9 @@
 #include "header.h"
+#include "Initgame.c"
+#include "Updategame.c"
+#include "Drawgame.c"
+#include "Unloadgame.c"
+
 
 int main(){
     
