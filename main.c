@@ -175,7 +175,7 @@ int main(){
                     DrawText("Então, montados em sua nave EL RATON,", 180, 140, 20, BLACK);
                     DrawText("os gênios da programação irão enfrentar tais criaturas,", 120, 180, 20, BLACK); 
                     DrawText(" passando por diversas ondas de inimigos, almejando", 120, 220, 20, BLACK);
-                    DrawText("unicamente Dom Pedro 2 como presidente do brasil", 140,260, 20, BLACK);                     
+                    DrawText("unicamente o conhecimento ABSOLUTO!!!", 180,260, 20, BLACK);                      
                 } break;
                 
                 case TITLE:
