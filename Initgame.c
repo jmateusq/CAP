@@ -28,8 +28,8 @@ void InitGame(void)
     for (int i = 0; i < NUM_MAX_ENEMIES; i++)
     {
         enemy[i].realTextureEnemy = &enemyTexture[rand() % 4].textureEnemy;
-        enemy[i].rec.width = 20;
-        enemy[i].rec.height = 10;
+        enemy[i].rec.width = 40;
+        enemy[i].rec.height = 13;
         enemy[i].rec.x = GetRandomValue(screenWidth, screenWidth + 1000);
         enemy[i].rec.y = GetRandomValue(0, screenHeight - enemy[i].rec.height);
         enemy[i].speed.x = 5;
