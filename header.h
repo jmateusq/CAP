@@ -2,16 +2,26 @@
 #define HEADER_H
 #include "raylib.h"
 #include <stdlib.h>
-//Todos os "defines" aqui
+//----------------------------------------------------------------------------------
+// Some Defines
+//----------------------------------------------------------------------------------
 #define NUM_SHOOTS 50
-#define NUM_MAX_ENEMIES 30
+#define NUM_MAX_ENEMIES 50
 #define FIRST_WAVE 10
 #define SECOND_WAVE 20
 #define THIRD_WAVE 50
 
-//Todos os typedefs aqui
-typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY, ENDING, RANKING, HIST1, HIST2 } GameScreen;
+//----------------------------------------------------------------------------------
+// Types and Structures Definition
+//----------------------------------------------------------------------------------
 typedef enum { FIRST = 0, SECOND, THIRD } EnemyWave;
+typedef enum GameScreen { LOGO = 0, TITLE, GAMEPLAY,RANKING, HIST1, HIST2 } GameScreen;
+
+typedef struct Background{
+    Texture2D texture_back;
+    int position_x;
+    int position_y;
+} Background;
 
 typedef struct Player{
     Texture2D scarfy;
@@ -19,12 +29,6 @@ typedef struct Player{
     Vector2 speed;
     Color color;
 } Player;
-
-typedef struct Background{
-    Texture2D texture_back;
-    int position_x;
-    int position_y;
-} Background;
 
 typedef struct EnemyTexture{
     Texture2D textureEnemy;
@@ -45,35 +49,42 @@ typedef struct Shoot{
     Color color;
 } Shoot;
 
-//Variaveis globais
-const int screenWidth = 800;
-const int screenHeight = 450;
+//------------------------------------------------------------------------------------
+// Global Variables Declaration
+//------------------------------------------------------------------------------------
+static const int screenWidth = 800;
+static const int screenHeight = 450;
 
-bool gameOver = false;
-bool pause =  false;
-int score = 0;
-bool victory = false;
+static bool gameOver = false;
+static bool pause =  false;
+static int score = 0;
+static bool victory = false;
 
-Player player = { 0 };
-EnemyTexture enemyTexture[4] = { 0 };
-Background background = { 0 };
-Enemy enemy[NUM_MAX_ENEMIES] = { 0 };
-Shoot shoot[NUM_SHOOTS] = { 0 };
-EnemyWave wave = { FIRST };
+static EnemyTexture enemyTexture[4] = { 0 };
+static Background background = { 0 };
+static Player player= { 0 };
+static Enemy enemy[NUM_MAX_ENEMIES] = { 0 };
+static Shoot shoot[NUM_SHOOTS] = { 0 };
+static EnemyWave wave = { FIRST };
 
-int shootRate = 0;
-float alpha = 0.0f;
+static int shootRate = 0;
+static float alpha = 0.0f;
 
-int activeEnemies = 0;
-int enemiesKill = 0;
-bool smooth = false;
+static int activeEnemies = 0;
+static int enemiesKill = 0;
+static bool smooth = false;
 
 
-//declarações de funções
+GameScreen currentScreen = LOGO;
+int framesCounter = 0;
 
-void InitGame(void);         // Inicia o jogo
-void UpdateGame(void);       // atualiza um frame do jogo
-void DrawGame(void);         // desenha um frame do jogo
-void UnloadGame(void);       // Unload game
+
+//------------------------------------------------------------------------------------
+// Module Functions Declaration (local)
+//------------------------------------------------------------------------------------
+static void InitGame(void);         // Initialize game
+static void UpdateGame(void);       // Update game (one frame)
+static void DrawGame(void);         // Draw game (one frame)
+static void UnloadGame(void);       // Unload game
 
 #endif
