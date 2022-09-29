@@ -1,16 +1,15 @@
 #include "header.h"
+#include <stdlib.h>
 void UpdateGame(void)
 {
     switch (currentScreen)
     {
     case LOGO:
     {
-        // TODO: Update LOGO screen variables here!
-
         framesCounter++; // Count frames
 
-        // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-        if (framesCounter > 120)
+        // Wait for 2 seconds (120 frames) before jumping to HIST1 screen
+        if (framesCounter > 12)
         {
             currentScreen = HIST1;
         }
@@ -18,12 +17,10 @@ void UpdateGame(void)
     break;
     case HIST1:
     {
-        // TODO: Update LOGO screen variables here!
-
         framesCounter++; // Count frames
 
-        // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-        if (framesCounter > 900)
+        // Wait for 15 seconds (900 frames) before jumping to HIST2 screen
+        if (framesCounter > 90)
         {
             currentScreen = HIST2;
         }
@@ -31,12 +28,10 @@ void UpdateGame(void)
     break;
     case HIST2:
     {
-        // TODO: Update LOGO screen variables here!
-
         framesCounter++; // Count frames
 
-        // Wait for 2 seconds (120 frames) before jumping to TITLE screen
-        if (framesCounter > 1800)
+        // Wait for 30 seconds (1800 frames) before jumping to TITLE screen
+        if (framesCounter > 180)
         {
             currentScreen = TITLE;
         }
@@ -44,8 +39,6 @@ void UpdateGame(void)
     break;
     case TITLE:
     {
-        // TODO: Update TITLE screen variables here!
-
         // Press enter to change to GAMEPLAY screen
         if (IsKeyPressed(KEY_ENTER)) // iniciar
         {
@@ -60,8 +53,6 @@ void UpdateGame(void)
     break;
     case RANKING:
     {
-        // TODO: Update ENDING screen variables here!
-
         // Press enter to return to TITLE screen
         if (IsKeyPressed(KEY_ENTER))
         {
@@ -97,7 +88,7 @@ void UpdateGame(void)
                     if (smooth)
                         alpha -= 0.02f;
 
-                    if (enemiesKill == activeEnemies)
+                    if (enemiesKill -25 == activeEnemies)
                     {
                         enemiesKill = 0;
 
@@ -127,7 +118,7 @@ void UpdateGame(void)
                     if (smooth)
                         alpha -= 0.02f;
 
-                    if (enemiesKill == activeEnemies)
+                    if (enemiesKill -40 == activeEnemies)
                     {
                         enemiesKill = 0;
 
@@ -187,9 +178,11 @@ void UpdateGame(void)
                 {
                     if (enemy[i].active)
                     {
-                        enemy[i].rec.x -= enemy[i].speed.x;
+                        if (wave == FIRST) enemy[i].rec.x -= enemy[i].speed.x;
+                        else if (wave == SECOND) enemy[i].rec.x -= enemy[i].speed.x + 1;
+                        else if (wave == THIRD) enemy[i].rec.x -= enemy[i].speed.x + 2;
 
-                        if (enemy[i].rec.x < -40)
+                        if (enemy[i].rec.x < -50)
                         {
                             enemy[i].rec.x = GetRandomValue(screenWidth, screenWidth + 1000);
                             enemy[i].rec.y = GetRandomValue(0, screenHeight - enemy[i].rec.height);
