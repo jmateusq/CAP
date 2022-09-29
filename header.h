@@ -2,6 +2,7 @@
 #define HEADER_H
 #include "raylib.h"
 #include <stdlib.h>
+#include <stdio.h>
 //----------------------------------------------------------------------------------
 // Some Defines
 //----------------------------------------------------------------------------------
@@ -30,12 +31,20 @@ typedef struct Player{
     Color color;
 } Player;
 
-typedef struct EnemyTexture{
-    Texture2D textureEnemy;
-} EnemyTexture;
+typedef struct Enemywave1{
+    Texture2D wave1;
+} Enemywave1;
+
+typedef struct Enemywave2{
+    Texture2D wave2;
+} Enemywave2;
+
+typedef struct Enemywave3{
+    Texture2D wave3;
+} Enemywave3;
 
 typedef struct Enemy{
-    Texture2D* realTextureEnemy;
+    Texture2D* realTextureEnemy[3];
     Rectangle rec;
     Vector2 speed;
     bool active;
@@ -60,7 +69,9 @@ static bool pause =  false;
 static int score = 0;
 static bool victory = false;
 
-static EnemyTexture enemyTexture[4] = { 0 };
+static Enemywave1 enemywave1[4] = { 0 };
+static Enemywave2 enemywave2[4] = { 0 };
+static Enemywave3 enemywave3[4] = { 0 };
 static Background background = { 0 };
 static Player player= { 0 };
 static Enemy enemy[NUM_MAX_ENEMIES] = { 0 };
