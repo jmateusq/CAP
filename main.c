@@ -15,6 +15,12 @@ int main(void)
     SetTargetFPS(60);
     //--------------------------------------------------------------------------------------
 
+    // Initialization file
+
+
+
+    //--------------------------------------------------------------------------------------
+
     // Main game loop
     while (!WindowShouldClose())    // Detect window close button or ESC key
     {
