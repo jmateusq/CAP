@@ -78,7 +78,9 @@ void DrawGame(void)
                 if (enemy[i].active)
                 {
                     // DrawRectangleRec(enemy[i].rec, enemy[i].color);
-                    DrawTexture(*enemy[i].realTextureEnemy, enemy[i].rec.x, enemy[i].rec.y - 42, RAYWHITE);
+                    if (wave == FIRST) DrawTexture(*enemy[i].realTextureEnemy[0], enemy[i].rec.x, enemy[i].rec.y - 40, RAYWHITE);
+                    else if (wave == SECOND) DrawTexture(*enemy[i].realTextureEnemy[1], enemy[i].rec.x, enemy[i].rec.y - 40, RAYWHITE);
+                    else if (wave == THIRD) DrawTexture(*enemy[i].realTextureEnemy[2], enemy[i].rec.x, enemy[i].rec.y - 40, RAYWHITE);
                 }
             }
 
