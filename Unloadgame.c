@@ -16,4 +16,5 @@ void UnloadGame(void)
     UnloadTexture(enemywave3[1].wave3);
     UnloadTexture(enemywave3[2].wave3);
     UnloadTexture(enemywave3[3].wave3);
+    free(auxiliar);
 }

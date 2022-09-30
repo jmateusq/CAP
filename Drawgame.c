@@ -53,10 +53,44 @@ void DrawGame(void)
         // TODO: Draw TITLE screen here!
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("RANKING", 120, 20, 50, DARKGREEN);
+        for (int i = 0; i < 10; i++)
+        {
+            auxiliar=toArray(pontos[i].pontos);
+            DrawText(pontos[i].nome, 120, 100+(25*i), 20, DARKGREEN);
+            DrawText(auxiliar, 250, 100+(25*i), 20, DARKGREEN);
+        }
+        
         DrawText("Aperte ENTER para iniciar o jogo", 120, 390, 15, DARKGREEN);
         DrawText("Aperte R para voltar ao menu iniciar", 120, 420, 15, DARKGREEN);
     }
     break;
+    
+    case NOME:
+    {
+        ClearBackground(RAYWHITE);
+
+            DrawText("DEIXE O MOUSE EM CIMA DA CAIXA DE TEXTO PARA DIGITAR", 80, 140, 20, GRAY);
+
+            DrawRectangleRec(textBox, LIGHTGRAY);
+            if (mouseOnText) DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, RED);
+            else DrawRectangleLines((int)textBox.x, (int)textBox.y, (int)textBox.width, (int)textBox.height, DARKGRAY);
+
+            DrawText(name, (int)textBox.x + 5, (int)textBox.y + 8, 40, MAROON);
+
+            DrawText(TextFormat("NUMERO DE CARACTERES: %i/%i", letterCount, MAX_INPUT_CHARS), 250, 250, 20, DARKGRAY);
+
+            if (mouseOnText)
+            {
+                if (letterCount < MAX_INPUT_CHARS)
+                {
+                    // Draw blinking underscore char
+                    if (((framesCounter/20)%2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
+                }
+                else DrawText("pressione BACKSPACE para apagar...", 230, 300, 20, GRAY);
+            }
+    }
+    break;
+
     case GAMEPLAY:
     {
         if (!gameOver)
@@ -101,7 +135,7 @@ void DrawGame(void)
         else
         {
 
-            DrawText("PRESS [ENTER] TO PLAY AGAIN", GetScreenWidth() / 2 - MeasureText("PRESS [ENTER] TO PLAY AGAIN", 20) / 2, GetScreenHeight() / 2 - 50, 20, GRAY);
+            DrawText("PRESSIONE [ENTER] PARA VOLTAR AO MENU INICIAL ", GetScreenWidth() / 2 - MeasureText("PRESSIONE [ENTER] PARA VOLTAR AO MENU INICIAL ", 20) / 2, GetScreenHeight() / 2 - 50, 20, GRAY);
         }
     }
     break;

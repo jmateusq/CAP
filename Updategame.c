@@ -72,6 +72,52 @@ void UpdateGame(void)
         }
     }
     break;
+
+    case NOME:
+    {
+        if (CheckCollisionPointRec(GetMousePosition(), textBox)) mouseOnText = true;
+        else mouseOnText = false;
+
+        if (mouseOnText)
+        {
+            // Set the window's cursor to the I-Beam
+            SetMouseCursor(MOUSE_CURSOR_IBEAM);
+
+            // Get char pressed (unicode character) on the queue
+            int key = GetCharPressed();
+
+            // Check if more characters have been pressed on the same frame
+            while (key > 0)
+            {
+                // NOTE: Only allow keys in range [32..125]
+                if ((key >= 32) && (key <= 125) && (letterCount < MAX_INPUT_CHARS))
+                {
+                    name[letterCount] = (char)key;
+                    name[letterCount+1] = '\0'; // Add null terminator at the end of the string.
+                    letterCount++;
+                }
+
+                key = GetCharPressed();  // Check next character in the queue
+            }
+
+            if (IsKeyPressed(KEY_BACKSPACE))
+            {
+                letterCount--;
+                if (letterCount < 0) letterCount = 0;
+                name[letterCount] = '\0';
+            }
+
+            if (IsKeyPressed(KEY_ENTER))
+            {
+                strcpy(nome_player,name);
+                currentScreen=TITLE;
+            }
+        }
+        else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+    }
+    break;
+
+
     case GAMEPLAY:
     {
         if (!gameOver)
@@ -261,10 +307,23 @@ void UpdateGame(void)
         }
         else
         {
-            if (IsKeyPressed(KEY_ENTER))
-            {
-                InitGame();
-                gameOver = false;
+            if(score>pontos[9].pontos){
+                ganhou=1;
+                qsort(pontos,10,sizeof(mitinho),compara);
+                pontos[9].pontos=score;
+                strcpy(pontos[9].nome,nome_player);
+                qsort(pontos,10,sizeof(mitinho),compara);
+            }
+            if(ganhou==1){
+                currentScreen=NOME;
+                ganhou = 0;
+            }
+            else{
+                if (IsKeyPressed(KEY_ENTER))
+                {
+                    InitGame();
+                    currentScreen=TITLE;
+                }
             }
         }
     }

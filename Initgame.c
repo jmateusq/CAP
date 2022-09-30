@@ -3,7 +3,7 @@
 void InitGame(void)
 {
     //Initialize background
-    background.texture_back = LoadTexture(".\\textures\\background.png");
+    background.texture_back = LoadTexture("./textures/background.png");
     background.position_x = 0;
     background.position_y = 0;
 
@@ -25,26 +25,33 @@ void InitGame(void)
     player.rec.width = 40;
     player.rec.height = 40;
     
-    player.scarfy = LoadTexture(".\\textures\\New Piskel (1).png");
+    player.scarfy = LoadTexture("./textures/New Piskel (1).png");
     player.speed.x = 4;
     player.speed.y = 5;
     player.color = BLACK;
 
+    FILE *f;
+    f = fopen("ranking.bin","r+b");
+    
+    fread(&pontos,sizeof(mitinho),10,f);
+    
+    fclose(f);
+
     // Initialize texture enemies
-    enemywave1[0].wave1 = LoadTexture(".\\textures\\se.png");
-    enemywave1[1].wave1 = LoadTexture(".\\textures\\senao.png");
-    enemywave1[2].wave1 = LoadTexture(".\\textures\\leia.png");
-    enemywave1[3].wave1 = LoadTexture(".\\textures\\escreva.png");
+    enemywave1[0].wave1 = LoadTexture("./textures/se.png");
+    enemywave1[1].wave1 = LoadTexture("./textures/senao.png");
+    enemywave1[2].wave1 = LoadTexture("./textures/leia.png");
+    enemywave1[3].wave1 = LoadTexture("./textures/escreva.png");
 
-    enemywave2[0].wave2 = LoadTexture(".\\textures\\realloc.png");
-    enemywave2[1].wave2 = LoadTexture(".\\textures\\ponteiro.png");
-    enemywave2[2].wave2 = LoadTexture(".\\textures\\vetor.png");
-    enemywave2[3].wave2 = LoadTexture(".\\textures\\strlen.png");
+    enemywave2[0].wave2 = LoadTexture("./textures/realloc.png");
+    enemywave2[1].wave2 = LoadTexture("./textures/ponteiro.png");
+    enemywave2[2].wave2 = LoadTexture("./textures/vetor.png");
+    enemywave2[3].wave2 = LoadTexture("./textures/strlen.png");
 
-    enemywave3[0].wave3 = LoadTexture(".\\textures\\0010.png");
-    enemywave3[1].wave3 = LoadTexture(".\\textures\\1001.png");
-    enemywave3[2].wave3 = LoadTexture(".\\textures\\file.png");
-    enemywave3[3].wave3 = LoadTexture(".\\textures\\fseek.png");
+    enemywave3[0].wave3 = LoadTexture("./textures/0010.png");
+    enemywave3[1].wave3 = LoadTexture("./textures/1001.png");
+    enemywave3[2].wave3 = LoadTexture("./textures/file.png");
+    enemywave3[3].wave3 = LoadTexture("./textures/fseek.png");
 
     // Initializate enemies
     for (int i = 0; i < NUM_MAX_ENEMIES; i++)

@@ -3,6 +3,7 @@
 #include "Updategame.c"
 #include "Drawgame.c"
 #include "Unloadgame.c"
+#include "textinho.c"
 
 int main(void)
 {
