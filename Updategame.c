@@ -114,6 +114,7 @@ void UpdateGame(void)
             }
         }
         else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
+        strcpy(pontos[9].nome,nome_player);
     }
     break;
 
@@ -311,7 +312,6 @@ void UpdateGame(void)
                 ganhou=1;
                 qsort(pontos,10,sizeof(mitinho),compara);
                 pontos[9].pontos=score;
-                strcpy(pontos[9].nome,nome_player);
                 qsort(pontos,10,sizeof(mitinho),compara);
             }
             if(ganhou==1){
