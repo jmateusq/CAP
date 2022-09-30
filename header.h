@@ -125,6 +125,8 @@ int framesCounter = 0;
 
 int ganhou = 0;
 
+int verificador = 0;
+
 char name[MAX_INPUT_CHARS + 1] = "\0"; // NOTE: One extra space required for null terminator char '\0'
 int letterCount = 0;
 

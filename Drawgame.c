@@ -58,6 +58,10 @@ void DrawGame(void)
             auxiliar=toArray(pontos[i].pontos);
             DrawText(pontos[i].nome, 120, 100+(25*i), 20, DARKGREEN);
             DrawText(auxiliar, 250, 100+(25*i), 20, DARKGREEN);
+
+            printf("%d", pontos[i].pontos);
+            fputs(pontos[i].nome, stdin);
+            printf("\n");
         }
         
         DrawText("Aperte ENTER para iniciar o jogo", 120, 390, 15, DARKGREEN);
