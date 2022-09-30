@@ -53,15 +53,11 @@ void DrawGame(void)
         // TODO: Draw TITLE screen here!
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("RANKING", 120, 20, 50, DARKGREEN);
-        for (int i = 0; i < 10; i++)
+        for (int tudo = 0; tudo < 10; tudo++)
         {
-            auxiliar=toArray(pontos[i].pontos);
-            DrawText(pontos[i].nome, 120, 100+(25*i), 20, DARKGREEN);
-            DrawText(auxiliar, 250, 100+(25*i), 20, DARKGREEN);
-
-            printf("%d", pontos[i].pontos);
-            fputs(pontos[i].nome, stdin);
-            printf("\n");
+            auxiliar=toArray(pontos[tudo].pontos);
+            DrawText(pontos[tudo].nome, 120, 100+(25*tudo), 20, DARKGREEN);
+            DrawText(auxiliar, 250, 100+(25*tudo), 20, DARKGREEN);
         }
         
         DrawText("Aperte ENTER para iniciar o jogo", 120, 390, 15, DARKGREEN);

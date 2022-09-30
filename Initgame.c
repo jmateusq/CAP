@@ -30,12 +30,7 @@ void InitGame(void)
     player.speed.y = 5;
     player.color = BLACK;
 
-    FILE *f;
-    f = fopen("ranking.bin","r+b");
     
-    fread(&pontos,sizeof(mitinho),10,f);
-    
-    fclose(f);
 
     // Initialize texture enemies
     enemywave1[0].wave1 = LoadTexture("./textures/se.png");

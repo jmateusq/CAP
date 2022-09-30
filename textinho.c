@@ -13,11 +13,10 @@ bool IsAnyKeyPressed()
 char * toArray(int number)
 {
     int n = log10(number) + 1;
-    int i;
     char *numberArray = calloc(n, sizeof(char));
-    for (i = n-1; i >= 0; --i, number /= 10)
+    for (int nada = n-1; nada >= 0; --nada, number /= 10)
     {
-        numberArray[i] = (number % 10) + '0';
+        numberArray[nada] = (number % 10) + '0';
     }
     return numberArray;
 }
@@ -26,4 +25,10 @@ int compara(const void* a,const void* b){
     mitinho* p1 = (mitinho*) a;
     mitinho* p2 = (mitinho*) b;
     return (p2->pontos-p1->pontos);
+}
+
+int compara2(const void* a,const void* b){
+    mitinho* p1 = (mitinho*) a;
+    mitinho* p2 = (mitinho*) b;
+    return (p1->pontos-p2->pontos);
 }

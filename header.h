@@ -143,5 +143,6 @@ static void DrawGame(void);   // Draw game (one frame)
 static void UnloadGame(void); // Unload game
 char * toArray(int number);
 int compara(const void* a,const void* b);
+int compara2(const void* a,const void* b);
 
 #endif

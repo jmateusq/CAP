@@ -70,6 +70,7 @@ void UpdateGame(void)
         if (IsKeyPressed('R'))
         {
             currentScreen = TITLE;
+            InitGame();
         }
     }
     break;
@@ -111,13 +112,16 @@ void UpdateGame(void)
 
             if (IsKeyPressed(KEY_ENTER))
             {
+                qsort(pontos,10,sizeof(mitinho),compara);
                 strcpy(nome_player,name);
-                currentScreen=TITLE;
+                strcpy(pontos[9].nome,nome_player);
+                pontos[9].pontos=score;
+                qsort(pontos,10,sizeof(mitinho),compara);
+                currentScreen=RANKING;
             }
         }
         else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
-        qsort(pontos,10,sizeof(mitinho),compara);
-        strcpy(pontos[0].nome,nome_player);
+        
     }
     break;
 
@@ -312,19 +316,10 @@ void UpdateGame(void)
         else
         {
 
-            if(score>pontos[9].pontos){
-                ganhou=1;
-                if(verificador==0){
-                    pontos[9].pontos=score;
-                    
-                }
-                
+            if(score > pontos[9].pontos){
+                currentScreen=NOME;
             }
 
-            if(ganhou==1){
-                currentScreen=NOME;
-                ganhou = 0;
-            }
 
             else{
                 if (IsKeyPressed(KEY_ENTER))
