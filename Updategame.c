@@ -2,6 +2,7 @@
 #include <stdlib.h>
 void UpdateGame(void)
 {
+    qsort(pontos,10,sizeof(mitinho),compara);
     switch (currentScreen)
     {
     case LOGO:
@@ -75,6 +76,7 @@ void UpdateGame(void)
 
     case NOME:
     {
+        
         if (CheckCollisionPointRec(GetMousePosition(), textBox)) mouseOnText = true;
         else mouseOnText = false;
 
@@ -114,7 +116,8 @@ void UpdateGame(void)
             }
         }
         else SetMouseCursor(MOUSE_CURSOR_DEFAULT);
-        strcpy(pontos[9].nome,nome_player);
+        qsort(pontos,10,sizeof(mitinho),compara);
+        strcpy(pontos[0].nome,nome_player);
     }
     break;
 
@@ -308,16 +311,21 @@ void UpdateGame(void)
         }
         else
         {
+
             if(score>pontos[9].pontos){
                 ganhou=1;
-                qsort(pontos,10,sizeof(mitinho),compara);
-                pontos[9].pontos=score;
-                qsort(pontos,10,sizeof(mitinho),compara);
+                if(verificador==0){
+                    pontos[9].pontos=score;
+                    
+                }
+                
             }
+
             if(ganhou==1){
                 currentScreen=NOME;
                 ganhou = 0;
             }
+
             else{
                 if (IsKeyPressed(KEY_ENTER))
                 {
