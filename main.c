@@ -18,7 +18,7 @@ int main(void)
     Music music = LoadMusicStream("./sounds/music.mp3");
 
     PlayMusicStream(music);
-    SetMusicVolume(music, 0.01f);
+    SetMusicVolume(music, 0.5f);
 
     float timePlayed = 0.0f;       
     bool pause = false;             
