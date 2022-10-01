@@ -26,9 +26,3 @@ int compara(const void* a,const void* b){
     mitinho* p2 = (mitinho*) b;
     return (p2->pontos-p1->pontos);
 }
-
-int compara2(const void* a,const void* b){
-    mitinho* p1 = (mitinho*) a;
-    mitinho* p2 = (mitinho*) b;
-    return (p1->pontos-p2->pontos);
-}
