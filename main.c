@@ -15,7 +15,7 @@ int main(void)
     
     InitAudioDevice();              // Initialize audio device
 
-    Music music = LoadMusicStream("country.mp3");
+    Music music = LoadMusicStream("./sounds/music.mp3");
 
     PlayMusicStream(music);
     SetMusicVolume(music, 0.03f);
