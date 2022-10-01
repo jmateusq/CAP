@@ -10,15 +10,15 @@ bool IsAnyKeyPressed()
 }
 
 
-char * toArray(int number)
+char * intParaArray(int numero)
 {
-    int n = log10(number) + 1;
-    char *numberArray = calloc(n, sizeof(char));
-    for (int nada = n-1; nada >= 0; --nada, number /= 10)
+    int n = log10(numero) + 1;
+    char *array = calloc(n, sizeof(char));
+    for (int nada = n-1; nada >= 0; --nada, numero /= 10)
     {
-        numberArray[nada] = (number % 10) + '0';
+        array[nada] = (numero % 10) + '0';
     }
-    return numberArray;
+    return array;
 }
 
 int compara(const void* a,const void* b){
