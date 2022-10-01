@@ -32,7 +32,8 @@ typedef enum GameScreen
     RANKING,
     HIST1,
     HIST2,
-    NOME
+    NOME,
+    CREDITOS
 } GameScreen;
 
 typedef struct Background
@@ -138,7 +139,7 @@ bool mouseOnText = false;
 // Module Functions Declaration (local)
 //------------------------------------------------------------------------------------
 static void InitGame(void);   // Initialize game
-static void UpdateGame(void); // Update game (one frame)
+static void UpdateGame(FILE *f); // Update game (one frame)
 static void DrawGame(void);   // Draw game (one frame)
 static void UnloadGame(void); // Unload game
 char * toArray(int number);

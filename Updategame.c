@@ -1,6 +1,6 @@
 #include "header.h"
 #include <stdlib.h>
-void UpdateGame(void)
+void UpdateGame(FILE *arc)
 {
     qsort(pontos,10,sizeof(mitinho),compara);
     switch (currentScreen)
@@ -57,6 +57,20 @@ void UpdateGame(void)
         if (IsKeyPressed('R')) // ranking
         {
             currentScreen = RANKING;
+        }
+        if (IsKeyPressed('C')) // ranking
+        {
+            currentScreen = CREDITOS;
+        }
+    }
+    break;
+    case CREDITOS:
+    {
+        // Press enter to change to GAMEPLAY screen
+        if (IsKeyPressed(KEY_ENTER)) // iniciar
+        {
+            currentScreen = TITLE;
+            InitGame();
         }
     }
     break;
@@ -117,6 +131,8 @@ void UpdateGame(void)
                 strcpy(pontos[9].nome,nome_player);
                 pontos[9].pontos=score;
                 qsort(pontos,10,sizeof(mitinho),compara);
+                rewind(arc);
+                fwrite(&pontos,sizeof(mitinho),10,arc);
                 currentScreen=RANKING;
             }
         }

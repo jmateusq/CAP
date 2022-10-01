@@ -32,9 +32,6 @@ int main(void)
     f = fopen("ranking.bin","r+b");
     
     fread(&pontos,sizeof(mitinho),10,f);
-    
-    fclose(f);
-
 
     //--------------------------------------------------------------------------------------
 
@@ -44,20 +41,14 @@ int main(void)
         // Update and Draw
         //----------------------------------------------------------------------------------
         UpdateMusicStream(music);   // Update music 
-        if (IsKeyPressed(KEY_P))
-        {
-            pause = !pause;
-
-            if (pause) PauseMusicStream(music);
-            else ResumeMusicStream(music);
-        }
+        SetMusicVolume(music, 0.05f);
 
         // Get normalized time played for current music stream
         timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
 
         if (timePlayed > 1.0f) timePlayed = 1.0f;   // Make sure time played is no longer than music
         
-        UpdateGame();
+        UpdateGame(f);
         DrawGame();
         //----------------------------------------------------------------------------------
     }
@@ -72,5 +63,6 @@ int main(void)
     CloseWindow();        // Close window and OpenGL context
     //--------------------------------------------------------------------------------------
 
+    fclose(f);
     return 0;
 }

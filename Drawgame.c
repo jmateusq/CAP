@@ -45,7 +45,20 @@ void DrawGame(void)
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("Pressione ENTER para iniciar", 200, 150, 30, BLACK);
         DrawText("Pressione R para ver o ranking", 210, 180, 25, BLACK);
-        DrawText("Jogo criado por:\nJosé Queiroz\nJoão Bizinelli\nAllan Moreira", 220, 350, 15, GRAY);
+        DrawText("Pressione C para ver os créditos", 220, 350, 25, BLACK);
+    }
+    break;
+    case CREDITOS:
+    {
+        // TODO: Draw TITLE screen here!
+        DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
+        DrawText("Jogo criado por: José Queiroz, João Bizinelli e Allan Moreira", 100, 40, 20, BLACK);
+        DrawText("Inspirações:", 100, 80, 40, BLACK);
+        DrawText("https://www.youtube.com/watch?v=-HDbgSb2OZ0", 100,130, 15, BLACK);
+        DrawText("https://www.raylib.com/games/classics/loader.html?name=classic_space_invaders", 100,180, 15, BLACK);
+        DrawText("https://www.raylib.com/examples/audio/loader.html?name=audio_music_stream", 100,230, 15, BLACK);
+        DrawText("https://www.raylib.com/examples/core/loader.html?name=core_basic_screen_manager", 100,280, 15, BLACK);
+        DrawText("https://www.raylib.com/examples/audio/loader.html?name=audio_raw_stream", 100,330, 15, BLACK);
     }
     break;
     case RANKING:
