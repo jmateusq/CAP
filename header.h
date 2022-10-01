@@ -143,8 +143,8 @@ static void InitGame(void);
 static void UpdateGame(FILE *f); 
 static void DrawGame(void);   
 static void UnloadGame(void); 
-char * toArray(int number);
+char * intParaArray(int number);
 int compara(const void* a,const void* b);
-int compara2(const void* a,const void* b);
+
 
 #endif
