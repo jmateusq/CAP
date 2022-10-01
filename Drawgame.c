@@ -7,14 +7,12 @@ void DrawGame(void)
     {
     case LOGO:
     {
-        // TODO: Draw LOGO screen here!
         DrawText("Mr. P entertainment", 160, 200, 40, BLACK);
     }
     break;
 
     case HIST1:
     {
-        // TODO: Draw LOGO screen here!
         DrawText("Em uma galáxia TOTALMENTE distante, jovens, iniciantes na área", 40, 0, 20, BLACK);
         DrawText("jovens, iniciantes na área de programação,", 160, 40, 20, BLACK);
         DrawText("buscam incessantemente por conhecimento divino", 140, 80, 20, BLACK);
@@ -31,7 +29,6 @@ void DrawGame(void)
 
     case HIST2:
     {
-        // TODO: Draw LOGO screen here!
         DrawText("Então, montados em sua nave EL RATON,", 180, 140, 20, BLACK);
         DrawText("os gênios da programação irão enfrentar tais criaturas,", 120, 180, 20, BLACK);
         DrawText(" passando por diversas ondas de inimigos, almejando", 120, 220, 20, BLACK);
@@ -41,7 +38,6 @@ void DrawGame(void)
 
     case TITLE:
     {
-        // TODO: Draw TITLE screen here!
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("Pressione ENTER para iniciar", 200, 150, 30, BLACK);
         DrawText("Pressione R para ver o ranking", 210, 180, 25, BLACK);
@@ -50,7 +46,6 @@ void DrawGame(void)
     break;
     case CREDITOS:
     {
-        // TODO: Draw TITLE screen here!
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("Jogo criado por: José Queiroz, João Bizinelli e Allan Moreira", 100, 40, 20, BLACK);
         DrawText("Inspirações:", 100, 80, 40, BLACK);
@@ -59,11 +54,12 @@ void DrawGame(void)
         DrawText("https://www.raylib.com/examples/audio/loader.html?name=audio_music_stream", 100,230, 15, BLACK);
         DrawText("https://www.raylib.com/examples/core/loader.html?name=core_basic_screen_manager", 100,280, 15, BLACK);
         DrawText("https://www.raylib.com/examples/audio/loader.html?name=audio_raw_stream", 100,330, 15, BLACK);
+        DrawText("Pressone ENTER para voltar a tela inicial", 100,380, 25, BLACK);
     }
     break;
     case RANKING:
     {
-        // TODO: Draw TITLE screen here!
+        
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("RANKING", 120, 20, 50, DARKGREEN);
         for (int tudo = 0; tudo < 10; tudo++)
@@ -73,7 +69,6 @@ void DrawGame(void)
             DrawText(auxiliar, 250, 100+(25*tudo), 20, DARKGREEN);
         }
         
-        DrawText("Aperte ENTER para iniciar o jogo", 120, 390, 15, DARKGREEN);
         DrawText("Aperte R para voltar ao menu iniciar", 120, 420, 15, DARKGREEN);
     }
     break;
@@ -96,7 +91,7 @@ void DrawGame(void)
             {
                 if (letterCount < MAX_INPUT_CHARS)
                 {
-                    // Draw blinking underscore char
+                    
                     if (((framesCounter/20)%2) == 0) DrawText("_", (int)textBox.x + 8 + MeasureText(name, 40), (int)textBox.y + 12, 40, MAROON);
                 }
                 else DrawText("pressione BACKSPACE para apagar...", 230, 300, 20, GRAY);
@@ -109,9 +104,8 @@ void DrawGame(void)
         if (!gameOver)
         {
             DrawTexture(background.texture_back, background.position_x, background.position_y, RAYWHITE);
-            // DrawRectangleRec(player.rec, player.color);
             DrawTexture(player.scarfy, player.rec.x - 10, player.rec.y - 12, RAYWHITE);
-            // UnloadTexture(player.scarfy);
+            
 
             if (wave == FIRST)
                 DrawText("FIRST WAVE", screenWidth / 2 - MeasureText("FIRST WAVE", 40) / 2, screenHeight / 2 - 40, 40, Fade(WHITE, alpha));
@@ -124,7 +118,7 @@ void DrawGame(void)
             {
                 if (enemy[i].active)
                 {
-                    // DrawRectangleRec(enemy[i].rec, enemy[i].color);
+                    
                     if (wave == FIRST) DrawTexture(*enemy[i].realTextureEnemy[0], enemy[i].rec.x, enemy[i].rec.y - 40, RAYWHITE);
                     else if (wave == SECOND) DrawTexture(*enemy[i].realTextureEnemy[1], enemy[i].rec.x, enemy[i].rec.y - 40, RAYWHITE);
                     else if (wave == THIRD) DrawTexture(*enemy[i].realTextureEnemy[2], enemy[i].rec.x, enemy[i].rec.y - 40, RAYWHITE);

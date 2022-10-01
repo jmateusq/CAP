@@ -7,9 +7,9 @@ void UpdateGame(FILE *arc)
     {
     case LOGO:
     {
-        framesCounter++; // Count frames
+        framesCounter++; 
 
-        // Wait for 2 seconds (120 frames) before jumping to HIST1 screen
+        // Espera 2 segundos para mudar pra proxima tela
         if (framesCounter > 120)
         {
             currentScreen = HIST1;
@@ -18,9 +18,8 @@ void UpdateGame(FILE *arc)
     break;
     case HIST1:
     {
-        framesCounter++; // Count frames
+        framesCounter++; 
 
-        // Wait for 15 seconds (900 frames) before jumping to HIST2 screen
         if (framesCounter > 900)
         {
             currentScreen = HIST2;
@@ -33,9 +32,9 @@ void UpdateGame(FILE *arc)
     break;
     case HIST2:
     {
-        framesCounter++; // Count frames
+        framesCounter++; 
 
-        // Wait for 30 seconds (1800 frames) before jumping to TITLE screen
+        
         if (framesCounter > 1800)
         {
             currentScreen = TITLE;
@@ -48,7 +47,7 @@ void UpdateGame(FILE *arc)
     break;
     case TITLE:
     {
-        // Press enter to change to GAMEPLAY screen
+        
         if (IsKeyPressed(KEY_ENTER)) // iniciar
         {
             currentScreen = GAMEPLAY;
@@ -66,8 +65,8 @@ void UpdateGame(FILE *arc)
     break;
     case CREDITOS:
     {
-        // Press enter to change to GAMEPLAY screen
-        if (IsKeyPressed(KEY_ENTER)) // iniciar
+        
+        if (IsKeyPressed(KEY_ENTER)) 
         {
             currentScreen = TITLE;
             InitGame();
@@ -76,11 +75,7 @@ void UpdateGame(FILE *arc)
     break;
     case RANKING:
     {
-        // Press enter to return to TITLE screen
-        if (IsKeyPressed(KEY_ENTER))
-        {
-            currentScreen = GAMEPLAY;
-        }
+        
         if (IsKeyPressed('R'))
         {
             currentScreen = TITLE;
@@ -97,24 +92,24 @@ void UpdateGame(FILE *arc)
 
         if (mouseOnText)
         {
-            // Set the window's cursor to the I-Beam
+            
             SetMouseCursor(MOUSE_CURSOR_IBEAM);
 
-            // Get char pressed (unicode character) on the queue
+            
             int key = GetCharPressed();
 
-            // Check if more characters have been pressed on the same frame
+            
             while (key > 0)
             {
-                // NOTE: Only allow keys in range [32..125]
+                
                 if ((key >= 32) && (key <= 125) && (letterCount < MAX_INPUT_CHARS))
                 {
                     name[letterCount] = (char)key;
-                    name[letterCount+1] = '\0'; // Add null terminator at the end of the string.
+                    name[letterCount+1] = '\0'; 
                     letterCount++;
                 }
 
-                key = GetCharPressed();  // Check next character in the queue
+                key = GetCharPressed(); 
             }
 
             if (IsKeyPressed(KEY_BACKSPACE))
@@ -234,7 +229,7 @@ void UpdateGame(FILE *arc)
                     break;
                 }
 
-                // Player movement
+                // Movimento do jogador
                 if (IsKeyDown(KEY_RIGHT))
                     player.rec.x += player.speed.x;
                 if (IsKeyDown(KEY_LEFT))
@@ -244,14 +239,14 @@ void UpdateGame(FILE *arc)
                 if (IsKeyDown(KEY_DOWN))
                     player.rec.y += player.speed.y;
 
-                // Player collision with enemy
+                // Colisão com inimigos
                 for (int i = 0; i < activeEnemies; i++)
                 {
                     if (CheckCollisionRecs(player.rec, enemy[i].rec))
                         gameOver = true;
                 }
 
-                // Enemy behaviour
+                // Comportamento dos inimigos
                 for (int i = 0; i < activeEnemies; i++)
                 {
                     if (enemy[i].active)
@@ -268,7 +263,7 @@ void UpdateGame(FILE *arc)
                     }
                 }
 
-                // Wall behaviour
+                // Comortamento da parede
                 if (player.rec.x <= 0)
                     player.rec.x = 0;
                 if (player.rec.x + player.rec.width >= screenWidth)
@@ -278,7 +273,7 @@ void UpdateGame(FILE *arc)
                 if (player.rec.y + player.rec.height >= screenHeight)
                     player.rec.y = screenHeight - player.rec.height;
 
-                // Shoot initialization
+                // Inicialização do tiro
                 if (IsKeyDown(KEY_SPACE))
                 {
                     shootRate += 5;
@@ -295,15 +290,15 @@ void UpdateGame(FILE *arc)
                     }
                 }
 
-                // Shoot logic
+                // logica do tiro
                 for (int i = 0; i < NUM_SHOOTS; i++)
                 {
                     if (shoot[i].active)
                     {
-                        // Movement
+                        // movimento
                         shoot[i].rec.x += shoot[i].speed.x;
 
-                        // Collision with enemy
+                        // colisão com inimigo
                         for (int j = 0; j < activeEnemies; j++)
                         {
                             if (enemy[j].active)

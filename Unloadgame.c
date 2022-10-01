@@ -1,7 +1,6 @@
 #include "header.h"
 void UnloadGame(void)
 {
-    // TODO: Unload all dynamic loaded data (textures, sounds, models...)
     UnloadTexture(player.scarfy);
     UnloadTexture(background.texture_back);
     UnloadTexture(enemywave1[0].wave1);

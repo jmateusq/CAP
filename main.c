@@ -7,27 +7,26 @@
 
 int main(void)
 {
-    // Initialization (Note windowTitle is unused on Android)
+    // Inicialização 
     //---------------------------------------------------------
     InitWindow(screenWidth, screenHeight, "classic game: space invaders");
 
     InitGame();
     
-    InitAudioDevice();              // Initialize audio device
+    InitAudioDevice();             
 
-    Music music = LoadMusicStream("./sounds/music.mp3");
+    Music music = LoadMusicStream("country.mp3");
 
     PlayMusicStream(music);
-    SetMusicVolume(music, 0.03f);
+    SetMusicVolume(music, 0.01f);
 
-    float timePlayed = 0.0f;        // Time played normalized
-    bool pause = false;             // Music playing paused
+    float timePlayed = 0.0f;       
+    bool pause = false;             
 
 
     SetTargetFPS(60);
-    //--------------------------------------------------------------------------------------
 
-    // Initialization file
+    // Inicializa arquivo
     FILE *f;
     f = fopen("ranking.bin","r+b");
     
@@ -35,18 +34,14 @@ int main(void)
 
     //--------------------------------------------------------------------------------------
 
-    // Main game loop
-    while (!WindowShouldClose())    // Detect window close button or ESC key
+    while (!WindowShouldClose())    
     {
-        // Update and Draw
-        //----------------------------------------------------------------------------------
-        UpdateMusicStream(music);   // Update music 
-        SetMusicVolume(music, 0.05f);
+    
+        UpdateMusicStream(music);  
 
-        // Get normalized time played for current music stream
         timePlayed = GetMusicTimePlayed(music)/GetMusicTimeLength(music);
 
-        if (timePlayed > 1.0f) timePlayed = 1.0f;   // Make sure time played is no longer than music
+        if (timePlayed > 1.0f) timePlayed = 1.0f;   
         
         UpdateGame(f);
         DrawGame();
@@ -54,13 +49,13 @@ int main(void)
     }
     // De-Initialization
     //--------------------------------------------------------------------------------------
-    UnloadGame();         // Unload loaded data (textures, sounds, models...)
+    UnloadGame();        
     
-    UnloadMusicStream(music);   // Unload music stream buffers from RAM
+    UnloadMusicStream(music);  
 
-    CloseAudioDevice();         // Close audio device (music streaming is automatically stopped)
+    CloseAudioDevice();         
 
-    CloseWindow();        // Close window and OpenGL context
+    CloseWindow();        
     //--------------------------------------------------------------------------------------
 
     fclose(f);

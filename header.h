@@ -6,7 +6,7 @@
 #include <string.h>
 #include <math.h>
 //----------------------------------------------------------------------------------
-// Some Defines
+// Defines
 //----------------------------------------------------------------------------------
 #define NUM_SHOOTS 50
 #define NUM_MAX_ENEMIES 50
@@ -16,7 +16,7 @@
 #define MAX_INPUT_CHARS 9
 
 //----------------------------------------------------------------------------------
-// Types and Structures Definition
+// Typedefs
 //----------------------------------------------------------------------------------
 typedef enum
 {
@@ -89,16 +89,17 @@ typedef struct
     char nome[10];
 } mitinho;
 
-char * auxiliar;
-char nome_player[10];
-mitinho pontos[10]/*={{100,"pedro"},{120,"braulio"},{150,"cleiton"},{150,"cleiton"},{160,"ademar"},{180,"creoke"},{190,"bolsonaro"},{200,"lula"},{210,"eymael"},{230,"kataguiri"}}*/;
-int pedro;
-
 //------------------------------------------------------------------------------------
-// Global Variables Declaration
+// variaveis globais
 //------------------------------------------------------------------------------------
 static const int screenWidth = 800;
 static const int screenHeight = 450;
+
+char * auxiliar;
+char nome_player[10];
+mitinho pontos[10];
+int pedro;
+
 
 static bool gameOver = false;
 static bool pause = false;
@@ -128,7 +129,7 @@ int ganhou = 0;
 
 int verificador = 0;
 
-char name[MAX_INPUT_CHARS + 1] = "\0"; // NOTE: One extra space required for null terminator char '\0'
+char name[MAX_INPUT_CHARS + 1] = "\0"; 
 int letterCount = 0;
 
 Rectangle textBox = {screenWidth / 2.0f - 100, 180, 225, 50};
@@ -136,12 +137,12 @@ bool mouseOnText = false;
 
 
 //------------------------------------------------------------------------------------
-// Module Functions Declaration (local)
+// funções
 //------------------------------------------------------------------------------------
-static void InitGame(void);   // Initialize game
-static void UpdateGame(FILE *f); // Update game (one frame)
-static void DrawGame(void);   // Draw game (one frame)
-static void UnloadGame(void); // Unload game
+static void InitGame(void);  
+static void UpdateGame(FILE *f); 
+static void DrawGame(void);   
+static void UnloadGame(void); 
 char * toArray(int number);
 int compara(const void* a,const void* b);
 int compara2(const void* a,const void* b);

@@ -2,12 +2,12 @@
 #include "header.h"
 void InitGame(void)
 {
-    //Initialize background
+    //inicia background
     background.texture_back = LoadTexture("./textures/background.png");
     background.position_x = 0;
     background.position_y = 0;
 
-    // Initialize game variables
+    // Inicia variaveis
     shootRate = 0;
     pause = false;
     gameOver = false;
@@ -19,7 +19,7 @@ void InitGame(void)
     score = 0;
     alpha = 0;
 
-    // Initialize player
+    // Inicia player
     player.rec.x =  20;
     player.rec.y = 50;
     player.rec.width = 40;
@@ -32,7 +32,7 @@ void InitGame(void)
 
     
 
-    // Initialize texture enemies
+    // Inicia textura de inimigos
     enemywave1[0].wave1 = LoadTexture("./textures/se.png");
     enemywave1[1].wave1 = LoadTexture("./textures/senao.png");
     enemywave1[2].wave1 = LoadTexture("./textures/leia.png");
@@ -48,7 +48,7 @@ void InitGame(void)
     enemywave3[2].wave3 = LoadTexture("./textures/file.png");
     enemywave3[3].wave3 = LoadTexture("./textures/fseek.png");
 
-    // Initializate enemies
+    // inicia inimigos
     for (int i = 0; i < NUM_MAX_ENEMIES; i++)
     {
         enemy[i].realTextureEnemy[0] = &enemywave1[rand() % 4].wave1;
@@ -64,7 +64,7 @@ void InitGame(void)
         enemy[i].color = GREEN;
     }
 
-    // Initialize shoots
+    // Inicia disparos
     for (int i = 0; i < NUM_SHOOTS; i++)
     {
         shoot[i].rec.x = player.rec.x;
