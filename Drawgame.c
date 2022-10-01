@@ -64,7 +64,7 @@ void DrawGame(void)
         DrawText("RANKING", 120, 20, 50, DARKGREEN);
         for (int tudo = 0; tudo < 10; tudo++)
         {
-            auxiliar=toArray(pontos[tudo].pontos);
+            auxiliar=intParaArray(pontos[tudo].pontos);
             DrawText(pontos[tudo].nome, 120, 100+(25*tudo), 20, DARKGREEN);
             DrawText(auxiliar, 250, 100+(25*tudo), 20, DARKGREEN);
         }
