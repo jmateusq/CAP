@@ -2,7 +2,6 @@
 #include <stdlib.h>
 void UpdateGame(FILE *arc)
 {
-    qsort(pontos,10,sizeof(mitinho),compara);
     switch (currentScreen)
     {
     case LOGO:
@@ -121,13 +120,14 @@ void UpdateGame(FILE *arc)
 
             if (IsKeyPressed(KEY_ENTER))
             {
-                qsort(pontos,10,sizeof(mitinho),compara);
-                strcpy(nome_player,name);
-                strcpy(pontos[9].nome,nome_player);
+                strcpy(pontos[9].nome,name);
                 pontos[9].pontos=score;
+
                 qsort(pontos,10,sizeof(mitinho),compara);
+
                 rewind(arc);
                 fwrite(&pontos,sizeof(mitinho),10,arc);
+                
                 currentScreen=RANKING;
             }
         }

@@ -21,8 +21,6 @@ int main(void)
     SetMusicVolume(music, 0.5f);
 
     float timePlayed = 0.0f;       
-    bool pause = false;             
-
 
     SetTargetFPS(60);
 

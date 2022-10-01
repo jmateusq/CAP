@@ -7,7 +7,7 @@ void DrawGame(void)
     {
     case LOGO:
     {
-        DrawText("Mr. P entertainment", 160, 200, 40, BLACK);
+        DrawText("Mr. P entertainment", 200, 200, 40, BLACK);
     }
     break;
 
@@ -39,37 +39,39 @@ void DrawGame(void)
     case TITLE:
     {
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
-        DrawText("Pressione ENTER para iniciar", 200, 150, 30, BLACK);
-        DrawText("Pressione R para ver o ranking", 210, 180, 25, BLACK);
-        DrawText("Pressione C para ver os créditos", 220, 350, 25, BLACK);
+        DrawText("Pressione ENTER para iniciar", 175, 120, 30, BLACK);
+        DrawText("Pressione R para ver o ranking", 205, 180, 25, BLACK);
+        DrawText("Pressione C para ver os créditos", 190, 230, 25, BLACK);
+        DrawText("Utilize as setas do teclado e espaço para jogar", 100, 390, 25, BLACK);
+
     }
     break;
     case CREDITOS:
     {
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
         DrawText("Jogo criado por: José Queiroz, João Bizinelli e Allan Moreira", 100, 40, 20, BLACK);
-        DrawText("Inspirações:", 100, 80, 40, BLACK);
+        DrawText("Inspirações:", 275, 80, 40, BLACK);
         DrawText("https://www.youtube.com/watch?v=-HDbgSb2OZ0", 100,130, 15, BLACK);
         DrawText("https://www.raylib.com/games/classics/loader.html?name=classic_space_invaders", 100,180, 15, BLACK);
         DrawText("https://www.raylib.com/examples/audio/loader.html?name=audio_music_stream", 100,230, 15, BLACK);
         DrawText("https://www.raylib.com/examples/core/loader.html?name=core_basic_screen_manager", 100,280, 15, BLACK);
         DrawText("https://www.raylib.com/examples/audio/loader.html?name=audio_raw_stream", 100,330, 15, BLACK);
-        DrawText("Pressone ENTER para voltar a tela inicial", 100,380, 25, BLACK);
+        DrawText("Pressone ENTER para voltar a tela inicial", 130,380, 25, BLACK);
     }
     break;
     case RANKING:
     {
         
         DrawRectangle(0, 0, screenWidth, screenHeight, WHITE);
-        DrawText("RANKING", 120, 20, 50, DARKGREEN);
+        DrawText("RANKING", 280, 20, 50, BLACK);
         for (int tudo = 0; tudo < 10; tudo++)
         {
             auxiliar=intParaArray(pontos[tudo].pontos);
-            DrawText(pontos[tudo].nome, 120, 100+(25*tudo), 20, DARKGREEN);
-            DrawText(auxiliar, 250, 100+(25*tudo), 20, DARKGREEN);
+            DrawText(pontos[tudo].nome, 300, 100+(25*tudo), 20, BLACK);
+            DrawText(auxiliar, 430, 100+(25*tudo), 20, BLACK);
         }
         
-        DrawText("Aperte R para voltar ao menu iniciar", 120, 420, 15, DARKGREEN);
+        DrawText("Aperte R para voltar ao menu iniciar", 240, 420, 18, DARKGREEN);
     }
     break;
     
